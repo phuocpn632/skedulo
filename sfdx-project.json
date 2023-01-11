@@ -1,0 +1,12 @@
+{
+  "packageDirectories": [
+    {
+      "path": "force-app",
+      "default": true
+    }
+  ],
+  "name": "skedulo",
+  "namespace": "",
+  "sfdcLoginUrl": "https://cunning-otter-tv22in-dev-ed.trailblaze.my.salesforce.com",
+  "sourceApiVersion": "55.0"
+}
