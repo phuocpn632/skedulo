@@ -1,6 +1,7 @@
+@isTest
 public with sharing class TestUpdateAccountTotalContact {
-    @isTest
-    public TestUpdateAccountTotalContact() {
+    // @isTest
+    // public TestUpdateAccountTotalContact() {
 
-    }
+    // }
 }
