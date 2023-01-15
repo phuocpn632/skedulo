@@ -1,6 +1,6 @@
 @isTest(SeeAllData=true)
-public with sharing class TestAutoSubmitApproval {
-    @isTest static void TestCreateContact() {
+public with sharing class TestDeleteActiveContact {
+    @isTest static void TestDeleteActiveContact() {
         //Setup Test Data
         Contact contact = TestDataFactory.ContactDataFactory();
 
@@ -23,9 +23,17 @@ public with sharing class TestAutoSubmitApproval {
         req.setComments('Test Auto Approve');
         Approval.process(req);
         
-        // Validate the Total Contacts updating
+        // Verify the Total Contacts after updating
         Account acc = [SELECT Id, Total_Contacts__c FROM Account WHERE Id = '001Dn00000DHuUlIAL'];
-        System.debug('Test Account Total Contact: ' + acc.Total_Contacts__c);
+        System.debug('Test Account Total Contact After Updating: ' + acc.Total_Contacts__c);
+
+        // Delete Approval contact
+        Database.delete(result.id);
+
+        // Verify the Total Contacts after deleting
+        Account acc1 = [SELECT Id, Total_Contacts__c FROM Account WHERE Id = '001Dn00000DHuUlIAL'];
+        System.debug('Test Account Total Contact After Deleting: ' + acc1.Total_Contacts__c);
+
         Test.stopTest();
 
         //Verify the trigger inf
@@ -41,7 +49,7 @@ public with sharing class TestAutoSubmitApproval {
         }
     }
 
-    @isTest static void TestCreateContacts() {
+    @isTest static void TestDeleteActiveContacts() {
         //Setup Test Data
         List<Contact> contactList = TestDataFactory.ContactsDataFactory();
 
@@ -83,8 +91,16 @@ public with sharing class TestAutoSubmitApproval {
         Approval.process(reqList);
 
         // Validate the Total Contacts updating
-        Account acc = [SELECT Id, Total_Contacts__c FROM Account WHERE Id = '001Dn00000DHuUlIAL'];
-        System.debug('Test Account Total Contact: ' + acc.Total_Contacts__c);
+        Account acc = [SELECT Id, Total_Contacts__c FROM Account WHERE Id = '001Dn00000DHuUlIAL'];        
+        System.debug('Test Account Total Contact After Updating: ' + acc.Total_Contacts__c);
+
+        // Delete Approval contacts
+        Database.delete(resultIds);
+
+        // Verify the Total Contacts after deleting
+        Account acc1 = [SELECT Id, Total_Contacts__c FROM Account WHERE Id = '001Dn00000DHuUlIAL'];
+        System.debug('Test Account Total Contact After Deleting: ' + acc1.Total_Contacts__c);
+
         
         Test.stopTest();
 
