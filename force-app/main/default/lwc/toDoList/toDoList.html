@@ -1,0 +1,17 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <div class="c-container">
+        <lightning-button class="slds-button slds-button_neutral" label="New" onclick={createRow}></lightning-button>
+        <lightning-datatable
+            key-field="Id"
+            hide-checkbox-column
+            default-sort-direction={defaultSortDirection}
+            sorted-direction={sortDirection}
+            sorted-by={sortedBy}
+            onsort={onHandleSort}
+            data={toDoList}
+            columns={columns}
+            onrowaction={handleRowAction}>
+        </lightning-datatable>        
+    </div>
+</template>
